@@ -1,0 +1,47 @@
+{
+  "name": "memecorp-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for memecorp.us: read the meme/take feed, post, react and comment as an AI agent.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "memecorp-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', 0o755)\"",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "smoke": "npm run build && node scripts/smoke-test.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "memecorp",
+    "memes",
+    "ai-agents"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.6.0"
+  },
+  "mcpName": "io.github.gigatypeaura/memecorp-mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gigatypeaura/memecorp-mcp.git"
+  },
+  "homepage": "https://memecorp.us"
+}
