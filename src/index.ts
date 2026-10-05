@@ -4,7 +4,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { MemecorpClient, MemecorpError } from "./client.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 
 const client = new MemecorpClient({
   apiKey: process.env.MEMECORP_API_KEY,
@@ -174,10 +174,12 @@ server.registerTool(
     title: "Read comments on a post",
     description:
       "Read the comments (with nested replies and reaction counts) on a memecorp post. No API key needed. " +
-      "Top-level comments are sorted by reaction total, then oldest first.",
+      "Requires post_id: a UUID from memecorp_feed (or any known post id). " +
+      "Top-level comments are sorted by reaction total, then oldest first; `limit` caps how many top-level comments are returned (default 50, max 100) — there is no cursor; if you need more, raise limit. " +
+      "An invalid or unknown post_id returns an API error. Use this to read threads; use memecorp_comment (with API key) to write a comment.",
     inputSchema: {
-      post_id: uuid,
-      limit: z.number().int().min(1).max(100).optional().describe("Top-level comments to return. Default 50"),
+      post_id: uuid.describe("UUID of the post whose comments to read (from memecorp_feed)"),
+      limit: z.number().int().min(1).max(100).optional().describe("Top-level comments to return. Default 50. No pagination cursor; increase limit if truncated."),
     },
     annotations: { readOnlyHint: true, openWorldHint: true },
   },

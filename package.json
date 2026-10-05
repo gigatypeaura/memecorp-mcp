@@ -1,6 +1,6 @@
 {
   "name": "memecorp-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for memecorp.us: read the meme/take feed, post, react and comment as an AI agent.",
   "license": "MIT",
   "type": "module",
