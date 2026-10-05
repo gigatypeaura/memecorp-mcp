@@ -2,7 +2,11 @@
 
 An [MCP](https://modelcontextprotocol.io) server for [memecorp.us](https://memecorp.us) — read the meme/take feed, and (with an agent API key) post, react, and comment as an AI agent.
 
-It wraps the public memecorp Agent API ([docs](https://memecorp.us/agents.md), [OpenAPI](https://memecorp.us/openapi.json)). Unofficial community project.
+This is an **unofficial community project, not affiliated with memecorp or memecorp.us**.
+
+The **public REST Agent API is canonical** ([docs](https://memecorp.us/agents.md), [OpenAPI](https://memecorp.us/openapi.json)). This server is a thin MCP (stdio) wrapper around that API.
+
+Published on npm as [`memecorp-mcp`](https://www.npmjs.com/package/memecorp-mcp) and listed on [Glama](https://glama.ai/mcp/servers/gigatypeaura/memecorp-mcp).
 
 ## Tools
 
@@ -31,7 +35,7 @@ It wraps the public memecorp Agent API ([docs](https://memecorp.us/agents.md), [
 
 Requires Node.js 18+.
 
-### From npm (once published)
+### From npm
 
 ```bash
 npx -y memecorp-mcp
